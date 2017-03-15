@@ -1,0 +1,259 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>DHIS 2</title>        
+        <script type="text/javascript" src="../javascripts/jQuery/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#j_username').focus();
+
+                $('#loginForm').bind('submit', function() {
+					$('#submit').attr('disabled', 'disabled');
+					$('#reset').attr('disabled', 'disabled');
+
+	                sessionStorage.removeItem( 'orgUnitSelected' );
+                });
+            });
+        </script>
+        <link type="text/css" rel="stylesheet" href="../css/login.css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link type="text/css" rel="stylesheet" href="styles/layout.css">
+    </head>
+    <body>
+	
+	
+	<script language="javascript" type="text/javascript">
+			function validate()
+			{
+				var report= document.getElementById("report").value;
+				if(report==="")
+				document.getElementById("dwnload").disabled = true;
+				
+				else
+				{
+					loadFiles();
+				}
+			}
+			
+			function validate2()
+			{
+				var report= document.getElementById("report").value;
+				if(report==="")
+				document.getElementById("dwnload").disabled = true;
+				
+				else
+				{
+					loadFiles();
+				}
+			}
+			
+			function loadFiles()
+			{
+				var district= document.getElementById("district").value;
+				var report= document.getElementById("report").value;
+				var count=77;
+				var tables = [
+						["ARARIA","District_VHSND_ARARIADistrict__Sep-14.xls","State wise progress report","VHSND","September - 2014"],
+["ARARIA","OrgUnitWiseProgressReport_MIES_ARARIADistrict__Sep-14.xls","Organization units wise progress report","MIES","September - 2014"],
+["ARWAL","District_VHSND_ARWALDistrict__Sep-14.xls","State wise progress report","VHSND","September - 2014"],
+["ARWAL","OrgUnitWiseProgressReport_MIES_ARWALDistrict__Sep-14.xls","Organization units wise progress report","MIES","September - 2014"],
+["AURANGABAD","District_VHSND_AURANGABADDistrict__Sep-14.xls","State wise progress report","VHSND","September - 2014"],
+["AURANGABAD","OrgUnitWiseProgressReport_MIES_AURANGABADDistrict__Sep-14.xls","Organization units wise progress report","MIES","September - 2014"],
+["BANKA","District_VHSND_BANKA__Sep-14.xls","State wise progress report","VHSND","September - 2014"],
+["BANKA","OrgUnitWiseProgressReport_MIES_BANKA__Sep-14.xls","Organization units wise progress report","MIES","September - 2014"],
+["BEGUSARAI","District_VHSND_BEGUSARAIDistrict__Sep-14.xls","State wise progress report","VHSND","September - 2014"],
+["BEGUSARAI","OrgUnitWiseProgressReport_MIES_BEGUSARAIDistrict__Sep-14.xls","Organization units wise progress report","MIES","September - 2014"],
+["BHAGALPUR","District_VHSND_BHAGALPURDistrict__Sep-14.xls","State wise progress report","VHSND","September - 2014"],
+["BHAGALPUR","OrgUnitWiseProgressReport_MIES_BHAGALPURDistrict__Sep-14.xls","Organization units wise progress report","MIES","September - 2014"],
+["BHOJPUR","District_VHSND_BHOJPURDistrict__Sep-14.xls","State wise progress report","VHSND","September - 2014"],
+["BHOJPUR","OrgUnitWiseProgressReport_MIES_BHOJPURDistrict__Sep-14.xls","Organization units wise progress report","MIES","September - 2014"],
+["BUXAR","District_VHSND_BUXAR__Sep-14.xls","State wise progress report","VHSND","September - 2014"],
+["BUXAR","OrgUnitWiseProgressReport_MIES_BUXAR__Sep-14.xls","Organization units wise progress report","MIES","September - 2014"],
+["DARBHANGA","District_VHSND_DARBHANGADistrict__Sep-14.xls","State wise progress report","VHSND","September - 2014"],
+["DARBHANGA","OrgUnitWiseProgressReport_MIES_DARBHANGADistrict__Sep-14.xls","Organization units wise progress report","MIES","September - 2014"],
+["GAYA","District_VHSND_GAYADistrict__Sep-14.xls","State wise progress report","VHSND","September - 2014"],
+["GAYA","OrgUnitWiseProgressReport_MIES_GAYADistrict__Sep-14.xls","Organization units wise progress report","MIES","September - 2014"],
+["GOPALGANJ","District_VHSND_GOPALGANJDistrict__Sep-14.xls","State wise progress report","VHSND","September - 2014"],
+["GOPALGANJ","OrgUnitWiseProgressReport_MIES_GOPALGANJDistrict__Sep-14.xls","Organization units wise progress report","MIES","September - 2014"],
+["JAMUI","District_VHSND_JAMUI__Sep-14.xls","State wise progress report","VHSND","September - 2014"],
+["JAMUI","OrgUnitWiseProgressReport_MIES_JAMUI__Sep-14.xls","Organization units wise progress report","MIES","September - 2014"],
+["JEHANABAD","District_VHSND_JEHANABADDistrict__Sep-14.xls","State wise progress report","VHSND","September - 2014"],
+["JEHANABAD","OrgUnitWiseProgressReport_MIES_JEHANABADDistrict__Sep-14.xls","Organization units wise progress report","MIES","September - 2014"],
+["KAIMUR","District_VHSND_KAIMUR__Sep-14.xls","State wise progress report","VHSND","September - 2014"],
+["KAIMUR","OrgUnitWiseProgressReport_MIES_KAIMUR__Sep-14.xls","Organization units wise progress report","MIES","September - 2014"],
+["KATIHAR","District_VHSND_KATIHARDistrict__Sep-14.xls","State wise progress report","VHSND","September - 2014"],
+["KATIHAR","OrgUnitWiseProgressReport_MIES_KATIHARDistrict__Sep-14.xls","Organization units wise progress report","MIES","September - 2014"],
+["KHAGARIA","District_VHSND_KHAGARIADistrict__Sep-14.xls","State wise progress report","VHSND","September - 2014"],
+["KHAGARIA","OrgUnitWiseProgressReport_MIES_KHAGARIADistrict__Sep-14.xls","Organization units wise progress report","MIES","September - 2014"],
+["KISHANGANJ","District_VHSND_KISHANGANJDistrict__Sep-14.xls","State wise progress report","VHSND","September - 2014"],
+["KISHANGANJ","OrgUnitWiseProgressReport_MIES_KISHANGANJDistrict__Sep-14.xls","Organization units wise progress report","MIES","September - 2014"],
+["LAKHISARAI","District_VHSND_LAKHISARAI__Sep-14.xls","State wise progress report","VHSND","September - 2014"],
+["LAKHISARAI","OrgUnitWiseProgressReport_MIES_LAKHISARAI__Sep-14.xls","Organization units wise progress report","MIES","September - 2014"],
+["MADHEPURA","District_VHSND_MADHEPURADistrict__Sep-14.xls","State wise progress report","VHSND","September - 2014"],
+["MADHEPURA","OrgUnitWiseProgressReport_MIES_MADHEPURADistrict__Sep-14.xls","Organization units wise progress report","MIES","September - 2014"],
+["MADHUBANI","District_VHSND_MADHUBANIDistrict__Sep-14.xls","State wise progress report","VHSND","September - 2014"],
+["MADHUBANI","OrgUnitWiseProgressReport_MIES_MADHUBANIDistrict__Sep-14.xls","Organization units wise progress report","MIES","September - 2014"],
+["MUNGER","District_VHSND_MUNGERDistrict__Sep-14.xls","State wise progress report","VHSND","September - 2014"],
+["MUNGER","OrgUnitWiseProgressReport_MIES_MUNGERDistrict__Sep-14.xls","Organization units wise progress report","MIES","September - 2014"],
+["MUZAFFARPUR","District_VHSND_MUZAFFARPURDistrict__Sep-14.xls","State wise progress report","VHSND","September - 2014"],
+["MUZAFFARPUR","OrgUnitWiseProgressReport_MIES_MUZAFFARPURDistrict__Sep-14.xls","Organization units wise progress report","MIES","September - 2014"],
+["NALANDA","District_VHSND_NALANDADistrict__Sep-14.xls","State wise progress report","VHSND","September - 2014"],
+["NALANDA","OrgUnitWiseProgressReport_MIES_NALANDADistrict__Sep-14.xls","Organization units wise progress report","MIES","September - 2014"],
+["NAWADA","District_VHSND_NAWADADistrict__Sep-14.xls","State wise progress report","VHSND","September - 2014"],
+["NAWADA","OrgUnitWiseProgressReport_MIES_NAWADADistrict__Sep-14.xls","Organization units wise progress report","MIES","September - 2014"],
+["PASCHIM_CHAMPARAN","District_VHSND_PASCHIMCHAMPARANDistrict__Sep-14.xls","State wise progress report","VHSND","September - 2014"],
+["PASCHIM_CHAMPARAN","OrgUnitWiseProgressReport_MIES_PASCHIMCHAMPARANDistrict__Sep-14.xls","Organization units wise progress report","MIES","September - 2014"],
+["PATNA","District_VHSND_PATNADistrict__Sep-14.xls","State wise progress report","VHSND","September - 2014"],
+["PATNA","OrgUnitWiseProgressReport_MIES_PATNADistrict__Sep-14.xls","Organization units wise progress report","MIES","September - 2014"],
+["PURBI_CHAMPARAN","District_VHSND_PURBICHAMPARAN__Sep-14.xls","State wise progress report","VHSND","September - 2014"],
+["PURBI_CHAMPARAN","OrgUnitWiseProgressReport_MIES_PURBICHAMPARAN__Sep-14.xls","Organization units wise progress report","MIES","September - 2014"],
+["PURNIA","District_VHSND_PURNIADistrict__Sep-14.xls","State wise progress report","VHSND","September - 2014"],
+["PURNIA","OrgUnitWiseProgressReport_MIES_PURNIADistrict__Sep-14.xls","Organization units wise progress report","MIES","September - 2014"],
+["ROHTAS","District_VHSND_ROHTASDistrict__Sep-14.xls","State wise progress report","VHSND","September - 2014"],
+["ROHTAS","OrgUnitWiseProgressReport_MIES_ROHTASDistrict__Sep-14.xls","Organization units wise progress report","MIES","September - 2014"],
+["SAHARSA","District_VHSND_SAHARSADistrict__Sep-14.xls","State wise progress report","VHSND","September - 2014"],
+["SAHARSA","OrgUnitWiseProgressReport_MIES_SAHARSADistrict__Sep-14.xls","Organization units wise progress report","MIES","September - 2014"],
+["SAMASTIPUR","District_VHSND_SAMASTIPURDistrict__Sep-14.xls","State wise progress report","VHSND","September - 2014"],
+["SAMASTIPUR","OrgUnitWiseProgressReport_MIES_SAMASTIPURDistrict__Sep-14.xls","Organization units wise progress report","MIES","September - 2014"],
+["SARAN","District_VHSND_SARANDistrict__Sep-14.xls","State wise progress report","VHSND","September - 2014"],
+["SHEIKHPURA","District_VHSND_SHEIKHPURA__Sep-14.xls","State wise progress report","VHSND","September - 2014"],
+["SHEIKHPURA","OrgUnitWiseProgressReport_MIES_SHEIKHPURA__Sep-14.xls","Organization units wise progress report","MIES","September - 2014"],
+["SHEOHAR","District_VHSND_SHEOHAR__Sep-14.xls","State wise progress report","VHSND","September - 2014"],
+["SHEOHAR","OrgUnitWiseProgressReport_MIES_SHEOHAR__Sep-14.xls","Organization units wise progress report","MIES","September - 2014"],
+["SITAMARHI","District_VHSND_SITAMARHIDistrict__Sep-14.xls","State wise progress report","VHSND","September - 2014"],
+["SITAMARHI","OrgUnitWiseProgressReport_MIES_SITAMARHIDistrict__Sep-14.xls","Organization units wise progress report","MIES","September - 2014"],
+["SIWAN","District_VHSND_SIWANDistrict__Sep-14.xls","State wise progress report","VHSND","September - 2014"],
+["SIWAN","OrgUnitWiseProgressReport_MIES_SIWANDistrict__Sep-14.xls","Organization units wise progress report","MIES","September - 2014"],
+["STATE","District_ranking_report2_BIHAR__Sep-2014.xls","State wise progress report","ranking"," - 20"],
+["STATE","OrgUnitWiseProgressReport_MIES_BIHAR__Sep-14.xlsx","Organization units wise progress report","MIES","September - 2014"],
+["SUPAUL","District_VHSND_SUPAUL__Sep-14.xls","State wise progress report","VHSND","September - 2014"],
+["SUPAUL","OrgUnitWiseProgressReport_MIES_SUPAUL__Sep-14.xls","Organization units wise progress report","MIES","September - 2014"],
+["VAISHALI","District_VHSND_VAISHALIDistrict__Sep-14.xls","State wise progress report","VHSND","September - 2014"],
+["VAISHALI","OrgUnitWiseProgressReport_MIES_VAISHALIDistrict__Sep-14.xls","Organization units wise progress report","MIES","September - 2014"]];
+						
+				var elements="";
+				var direc=" http://dhisbihar.cloudapp.net/reports/";
+				var found=false;
+				
+				
+				for(x=0;x<count;x++)
+				{				
+					if(tables[x][0]==district&&tables[x][3]==report)
+					{
+						direc=direc+tables[x][0]+"\/"+tables[x][1];
+						document.getElementById("dwnFrm").action=direc;
+						found=true;
+						direc=" http://dhisbihar.cloudapp.net/reports/";
+						report2="";
+						document.getElementById("dwnload").disabled = false;
+						document.getElementById("errorMsg").innerHTML="";
+						
+						//break;
+					}
+				}
+				
+				if(found===false)
+				{
+					document.getElementById("errorMsg").innerHTML="File not found";
+					document.getElementById("dwnload").disabled = true;
+				}
+			}
+			
+			function hidemsg()
+			{
+				document.getElementById("errorMsg").innerHTML="";
+			}
+		</script>	
+        <div class="loginField" align="center">
+            <div><img alt="" src="logo_banner.png"></div>
+            
+            <div style="margin-top:2%">
+            <form id='loginForm' action="../../dhis-web-commons-security/login.action" method="post">
+                <table>
+                    <tr>
+                        <td><label for="j_username">Username</label></td>
+                        <td><input type="text" id="j_username" name="j_username" style="width:240px; height:20px;"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="j_password">Password</label></td>
+                        <td><input type="password" id="j_password" name="j_password" style="width:240px; height:20px;"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                        	<input id="submit" class="button" type="submit" value="Login" style="width:120px">
+                            <input id="reset" class="button" type="reset" value="Clear" style="width:120px">
+						</td>
+                    </tr>
+                </table>
+            </form>
+			
+			<div id="footer">
+					<div id="report_head" class="font_verdana"> Standard Reports</div>
+					<div id="input_back"> 
+					<form method="get" id="dwnFrm" action="" >
+						<select class="font_verdana" id="district" onchange="validate2()">
+							<option value='STATE'>BIHAR : State </option>	
+							<option value='ARARIA'>ARARIA </option>	
+							<option value='ARWAL'>ARWAL </option>	
+							<option value='AURANGABAD'>AURANGABAD </option>	
+							<option value='BANKA'>BANKA </option>	
+							<option value='BEGUSARAI'>BEGUSARAI </option>	
+							<option value='BHAGALPUR'>BHAGALPUR </option>	
+							<option value='BHOJPUR'>BHOJPUR </option>	
+							<option value='BUXAR'>BUXAR </option>	
+							<option value='DARBHANGA'>DARBHANGA </option>	
+							<option value='GAYA'>GAYA </option>	
+							<option value='GOPALGANJ'>GOPALGANJ </option>	
+							<option value='JAMUI'>JAMUI </option>	
+							<option value='JEHANABAD'>JEHANABAD </option>	
+							<option value='KAIMUR'>KAIMUR </option>	
+							<option value='KATIHAR'>KATIHAR </option>	
+							<option value='KHAGARIA'>KHAGARIA </option>	
+							<option value='KISHANGANJ'>KISHANGANJ </option>	
+							<option value='LAKHISARAI'>LAKHISARAI </option>	
+							<option value='MADHEPURA'>MADHEPURA </option>	
+							<option value='MADHUBANI'>MADHUBANI </option>	
+							<option value='MUNGER'>MUNGER </option>	
+							<option value='MUZAFFARPUR'>MUZAFFARPUR </option>	
+							<option value='NALANDA'>NALANDA </option>	
+							<option value='NAWADA'>NAWADA </option>	
+							<option value='PASCHIM_CHAMPARAN'>PASCHIM CHAMPARAN </option>	
+							<option value='PATNA'>PATNA </option>	
+							<option value='PURBI_CHAMPARAN'>PURBI CHAMPARAN </option>	
+							<option value='PURNIA'>PURNIA </option>	
+							<option value='ROHTAS'>ROHTAS </option>	
+							<option value='SAHARSA'>SAHARSA </option>	
+							<option value='SAMASTIPUR'>SAMASTIPUR </option>	
+							<option value='SARAN'>SARAN </option>	
+							<option value='SHEIKHPURA'>SHEIKHPURA </option>	
+							<option value='SHEOHAR'>SHEOHAR </option>	
+							<option value='SITAMARHI'>SITAMARHI </option>	
+							<option value='SIWAN'>SIWAN </option>	
+							<option value='SUPAUL'>SUPAUL </option>	
+							<option value='VAISHALI'>VAISHALI </option>	
+						</select>
+						
+						<select class="font_verdana" id="report" onchange="validate()" >
+							<option value="">Select Report type</option>
+							<option value='VHSND'>VHSND</option>
+							<option value='ranking'>DISTRICT RANKINGS</option>
+							<option value='MIES'>MIES</option>
+						</select>
+						
+						<input type="submit" id="dwnload" value="Download" onclick="" disabled />
+						
+					</form>
+					</div>
+			</div>
+			
+			
+		</div>
+			<div id="errorMsg" onclick="hidemsg()"></div>
+            </div>
+            #if( $failed == true )
+            <span class="loginMessage">Wrong username or password. Please try again.</span>
+			#end            
+        </div>
+    </body>
+</html>
